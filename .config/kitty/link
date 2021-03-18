@@ -1,0 +1,5 @@
+title LINK
+new_tab VPN
+launch zsh -c '~/mount_tunnels.sh'
+new_tab SSH
+launch zsh -c 'sleep 30 && ssh nicolash@10.2.0.160'

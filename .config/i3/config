@@ -199,5 +199,16 @@ for_window [instance="google-chrome" title="Zimbra: Réception - Google Chrome"]
 # Start-up script
 exec --no-startup-id /usr/bin/mattermost-desktop
 exec --no-startup-id code
-exec --no-startup-id /usr/bin/google-chrome https://soundcloud.com --new-window
-exec --no-startup-id /usr/bin/google-chrome https://webmail.stormshield.eu/ --new-window
+exec --no-startup-id /usr/bin/google-chrome --new-window \
+	https://soundcloud.com \
+	https://open.spotify.com/ \
+	https://reddit.com/
+
+exec --no-startup-id /usr/bin/google-chrome --new-window \
+	https://webmail.stormshield.eu/ \
+	https://outlook.office.com/mail/inbox \
+	https://review-sns.stormshield.eu/differential/query/GpixWXJoCOc0/ \
+	https://jira.stormshield.eu/secure/RapidBoard.jspa?rapidView=156&view=detail&selectedIssue=EAL-295&quickFilter=613
+
+exec --no-startup-id kitty --session ~/.config/kitty/link
+exec --no-startup-id kitty --session ~/.config/kitty/work

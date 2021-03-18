@@ -114,3 +114,8 @@ export PATH="$PATH:$HOME/Téléchargements/packages/arcanist/bin"
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=5000
 HISTFILESIZE=5000
+#kitty 
+autoload -Uz compinit
+compinit
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
