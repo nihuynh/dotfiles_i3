@@ -165,7 +165,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/deamon.sh &
-# exec_always --no-startup-id picom &
+exec_always --no-startup-id picom &
 
 # Custom
 for_window [class="^.*"] border pixel 2
