@@ -1,0 +1,5 @@
+title LINK
+new_tab VPN
+launch zsh -c '~/mount_tunnels.sh && zsh'
+new_tab SSH
+launch zsh -c 'read input && ssh nicolash@10.2.0.160 && zsh'

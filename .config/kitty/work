@@ -1,0 +1,9 @@
+title WORKSPACE
+new_tab WORK
+launch zsh
+cd ~/Work/firmware
+new_tab TOOLCHAIN
+launch zsh
+cd ~/Work/doxygen_templates
+new_tab OTHER
+launch zsh

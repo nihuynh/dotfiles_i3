@@ -29,12 +29,13 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
 
-
 # Multi-screen screenshots with scrot
-bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Images/screenshots && mv $f ~/Images/screenshots && xclip -selection clipboard -t image/png -i ~/Images/screenshots/`ls -1 -t ~/Images/screenshots | head -1`' # All screens
+bindsym --release Print exec \
+	scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Images/screenshots && mv $f ~/Images/screenshots && xclip -selection clipboard -t image/png -i ~/Images/screenshots/`ls -1 -t ~/Images/screenshots | head -1`'
 
 # OSX-like area selection screenshots
-bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Images/screenshots && mv $f ~/Images/screenshots && xclip -selection clipboard -t image/png -i ~/Images/screenshots/`ls -1 -t ~/Images/screenshots | head -1`' # Area selection
+bindsym --release Shift+Print exec \
+	scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Images/screenshots && mv $f ~/Images/screenshots && xclip -selection clipboard -t image/png -i ~/Images/screenshots/`ls -1 -t ~/Images/screenshots | head -1`'
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -104,16 +105,19 @@ bindsym $mod+a focus parent
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 
-# workspace "1" output primary
-# workspace "2" output HDMI-0 primary
-# workspace "3" output primary
-# workspace "4" output HDMI-0 primary
-# workspace "5" output primary
-# workspace "6" output HDMI-0 primary
-# workspace "7" output primary
-# workspace "8" output HDMI-0 primary
-# workspace "9" output primary
-# workspace "10" output HDMI-0 primary
+# Screen settings
+exec_always "~/.config/i3/screen_setup.sh"
+
+workspace "1" output primary
+workspace "2" output primary
+workspace "3" output primary
+workspace "4" output primary
+workspace "5" output primary
+workspace "6" output primary
+workspace "7" output primary
+workspace "8" output HDMI-1 primary
+workspace "9" output HDMI-1 primary
+workspace "10" output HDMI-1 primary
 
 set $ws1 "1"
 set $ws2 "2"
@@ -160,13 +164,6 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-	font pango:Roboto Mono 10
-	status_command i3status
-}
-
 # Custom
 for_window [class="^.*"] border pixel 2
 gaps inner 5
@@ -175,25 +172,45 @@ gaps outer 5
 smart_gaps on
 smart_borders no_gaps
 
-# Screen settings
-# exec_always "~/.config/i3/screen_setup.sh"
-
 bindsym $mod+F1 exec google-chrome
 bindsym $mod+F2 exec code
 bindsym $mod+F3 exec nautilus
 
 bindsym $mod+F10 exec "~/.config/i3/lock.sh"
-exec xautolock -detectsleep -time 5 -locker '~/.config/i3/lock.sh' &
+
+# corner : + is activate and - is not-activate 0 (zero) is ignore
+# Default is 0000. The zeros represent the corners: top left, top right, bottom left, bottom right
+exec xautolock -detectsleep -time 5 -locker '~/.config/i3/lock.sh' \
+	-corners 0-+- -cornersize 30 -cornerdelay 1 -cornerredelay 5 &
 
 # Assign apps to workspaces
 assign [class="Code"] → $ws3
-assign [class="Mattermost"] → $ws5
-assign [class="zoom"] → $ws5
-for_window [instance="google-chrome" title="Discover on SoundCloud - Google Chrome"] move to workspace $ws6
+assign [class="Mattermost"] → $ws10
+assign [class="zoom"] → $ws9
+for_window [instance="google-chrome" title="Discover on SoundCloud - Google Chrome"] move to workspace $ws10
 for_window [instance="google-chrome" title="Zimbra: Réception - Google Chrome"] move to workspace $ws2
 
 # Start-up script
 exec --no-startup-id /usr/bin/mattermost-desktop
 exec --no-startup-id code
-exec --no-startup-id /usr/bin/google-chrome https://soundcloud.com --new-window
-exec --no-startup-id /usr/bin/google-chrome https://webmail.stormshield.eu/ --new-window
+exec --no-startup-id /usr/bin/google-chrome --new-window \
+	https://soundcloud.com \
+	https://open.spotify.com/ \
+	https://reddit.com/ \
+	https://www.tradingview.com/chart/YGvIR19H/
+
+exec --no-startup-id /usr/bin/google-chrome --new-window \
+	https://webmail.stormshield.eu/ \
+	https://outlook.office.com/mail/inbox \
+	https://review-sns.stormshield.eu/differential/query/GpixWXJoCOc0/ \
+	https://jira.stormshield.eu/secure/RapidBoard.jspa?rapidView=156&view=detail&selectedIssue=EAL-295&quickFilter=613 \
+	https://docs.google.com/spreadsheets/d/1xOOfV6_9wFw9dR2t2_BBMCFsuoSgzxRT5R7HqHIpglk/edit#gid=276789564 \
+
+# exec --no-startup-id /usr/bin/evolution
+
+exec --no-startup-id kitty --session ~/.config/kitty/link
+exec --no-startup-id kitty --session ~/.config/kitty/work
+
+# Start polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id picom &
