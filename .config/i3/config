@@ -204,7 +204,6 @@ exec --no-startup-id /usr/bin/google-chrome --new-window \
 	https://outlook.office.com/mail/inbox \
 	https://review-sns.stormshield.eu/differential/query/GpixWXJoCOc0/ \
 	https://jira.stormshield.eu/secure/RapidBoard.jspa?rapidView=156&view=detail&selectedIssue=EAL-295&quickFilter=613 \
-	https://docs.google.com/spreadsheets/d/1xOOfV6_9wFw9dR2t2_BBMCFsuoSgzxRT5R7HqHIpglk/edit#gid=276789564 \
 
 # exec --no-startup-id /usr/bin/evolution
 

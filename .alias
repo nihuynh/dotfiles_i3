@@ -74,5 +74,4 @@ alias conf='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 confwp() {
 	conf add -u && conf commit -m "$@" && conf push
 }
-alias update-vscode='wget https://vscode-update.azurewebsites.net/latest/linux-deb-x64/stable -O /tmp/code_latest_amd64.deb \
-    && sudo dpkg -i /tmp/code_latest_amd64.deb'
+alias update-vscode="wget 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64' -O /tmp/code_latest_amd64.deb && sudo dpkg -i /tmp/code_latest_amd64.deb"
