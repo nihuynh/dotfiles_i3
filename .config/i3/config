@@ -184,11 +184,11 @@ exec xautolock -detectsleep -time 5 -locker '~/.config/i3/lock.sh' \
 	-corners 0-+- -cornersize 30 -cornerdelay 1 -cornerredelay 5 &
 
 # Assign apps to workspaces
-assign [class="Code"] → $ws3
+assign [class="Code"] → $ws4
 assign [class="Mattermost"] → $ws10
 assign [class="zoom"] → $ws9
-for_window [instance="google-chrome" title="Discover on SoundCloud - Google Chrome"] move to workspace $ws10
-for_window [instance="google-chrome" title="Zimbra: Réception - Google Chrome"] move to workspace $ws2
+for_window [instance="google-chrome" title="Discover the top streamed music and songs online on Soundcloud - Google Chrome"] move to workspace $ws10
+for_window [instance="google-chrome" title="Email - Nicolas HUYNH - Outlook - Google Chrome"] move to workspace $ws2
 
 # Start-up script
 exec --no-startup-id /usr/bin/mattermost-desktop
@@ -200,8 +200,8 @@ exec --no-startup-id /usr/bin/google-chrome --new-window \
 	https://www.tradingview.com/chart/YGvIR19H/
 
 exec --no-startup-id /usr/bin/google-chrome --new-window \
-	https://webmail.stormshield.eu/ \
 	https://outlook.office.com/mail/inbox \
+	https://webmail.stormshield.eu/ \
 	https://review-sns.stormshield.eu/differential/query/GpixWXJoCOc0/ \
 	https://jira.stormshield.eu/secure/RapidBoard.jspa?rapidView=156&view=detail&selectedIssue=EAL-295&quickFilter=613 \
 
