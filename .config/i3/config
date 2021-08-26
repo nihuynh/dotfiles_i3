@@ -108,16 +108,16 @@ bindsym $mod+a focus parent
 # Screen settings
 exec_always "~/.config/i3/screen_setup.sh"
 
-workspace "1" output primary
-workspace "2" output primary
-workspace "3" output primary
+workspace "1" output eDP-1 primary
+workspace "2" output eDP-1 primary
+workspace "3" output eDP-1 primary
 workspace "4" output primary
 workspace "5" output primary
 workspace "6" output primary
 workspace "7" output primary
-workspace "8" output HDMI-1 primary
-workspace "9" output HDMI-1 primary
-workspace "10" output HDMI-1 primary
+workspace "8" output DP-1-8 primary
+workspace "9" output DP-1-8 primary
+workspace "10" output DP-1-8 primary
 
 set $ws1 "1"
 set $ws2 "2"
@@ -180,13 +180,13 @@ bindsym $mod+F10 exec "~/.config/i3/lock.sh"
 
 # corner : + is activate and - is not-activate 0 (zero) is ignore
 # Default is 0000. The zeros represent the corners: top left, top right, bottom left, bottom right
-exec xautolock -detectsleep -time 5 -locker '~/.config/i3/lock.sh' \
-	-corners 0-+- -cornersize 30 -cornerdelay 1 -cornerredelay 5 &
+# exec xautolock -detectsleep -time 5 -locker '~/.config/i3/lock.sh' \
+# 	-corners 0-+- -cornersize 30 -cornerdelay 1 -cornerredelay 5 &
 
 # Assign apps to workspaces
 assign [class="Code"] → $ws4
 assign [class="Mattermost"] → $ws10
-assign [class="zoom"] → $ws9
+assign [class="zoom"] → $ws6
 for_window [instance="google-chrome" title="Discover the top streamed music and songs online on Soundcloud - Google Chrome"] move to workspace $ws10
 for_window [instance="google-chrome" title="Email - Nicolas HUYNH - Outlook - Google Chrome"] move to workspace $ws2
 
@@ -201,13 +201,11 @@ exec --no-startup-id /usr/bin/google-chrome --new-window \
 
 exec --no-startup-id /usr/bin/google-chrome --new-window \
 	https://outlook.office.com/mail/inbox \
-	https://webmail.stormshield.eu/ \
-	https://review-sns.stormshield.eu/differential/query/GpixWXJoCOc0/ \
-	https://jira.stormshield.eu/secure/RapidBoard.jspa?rapidView=156&view=detail&selectedIssue=EAL-295&quickFilter=613 \
+	https://webmail.stormshield.eu/
 
 # exec --no-startup-id /usr/bin/evolution
 
-exec --no-startup-id kitty --session ~/.config/kitty/link
+# exec --no-startup-id kitty --session ~/.config/kitty/link
 exec --no-startup-id kitty --session ~/.config/kitty/work
 
 # Start polybar

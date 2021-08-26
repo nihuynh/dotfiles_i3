@@ -7,11 +7,23 @@ USBC_PORT=DP-1
 INTR_PORT=eDP-1
 HDMI_PORT=HDMI-1
 # Monitor setup :
-PRIMARY_SCREEN=$INTR_PORT
-VERTICAL_SCREEN=$HDMI_PORT
+PRIMARY_SCREEN=DP-1-1
+VERTICAL_SCREEN=DP-1-8
 
-xrandr \
-	--output $PRIMARY_SCREEN --primary --mode 1920x1080 --pos 0x840 --rotate normal \
-	--output $VERTICAL_SCREEN --mode 1920x1080 --pos 1920x0 --rotate left
 sleep 1
-feh --bg-scale $PRIMARY_BG --bg-scale $SECOND_BG
+if [[ $(xrandr --listactivemonitors | grep -v "Monitors" | cut -d" " -f4 | cut -d"+" -f2- | uniq | wc -l) == 3 ]]; then
+	xrandr \
+	--output $PRIMARY_SCREEN --primary --pos 0x320 \
+	--output $VERTICAL_SCREEN --pos 1920x0 --rotate right \
+	--output $INTR_PORT --pos 0x1400
+	sleep 1
+	feh --bg-scale $PRIMARY_BG --bg-scale $PRIMARY_BG --bg-scale $SECOND_BG
+else
+	xrandr \
+	--output $INTR_PORT --primary --pos 0x320 \
+	--output HDMI-1 --pos 1920x0 --rotate right
+	sleep 1
+	feh --bg-scale $PRIMARY_BG --bg-scale $SECOND_BG
+fi
+xrandr --output $INTR_PORT --primary
+xinput set-button-map 12 1 0 3

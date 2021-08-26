@@ -1,9 +1,8 @@
 title WORKSPACE
-new_tab WORK
-launch zsh
-cd ~/Work/firmware
 new_tab TOOLCHAIN
 launch zsh
 cd ~/Work/doxygen_templates
+new_tab SSH
+launch zsh -c 'read input && gnome-terminal -- /bin/sh -c 'ssh qualif@10.10.186.100' ; gnome-terminal -- /bin/sh -c 'ssh qualif@10.10.186.100''
 new_tab OTHER
 launch zsh
