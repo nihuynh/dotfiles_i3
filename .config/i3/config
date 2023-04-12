@@ -74,10 +74,10 @@ bindsym $mod+Shift+Down		move down
 bindsym $mod+Shift+Up		move up
 bindsym $mod+Shift+Right	move right
 
-bindsym $mod+Shift+y		resize grow width 10 px
-bindsym $mod+Shift+u		resize shrink height 10 px
-bindsym $mod+Shift+i		resize grow height 10 px
-bindsym $mod+Shift+o		resize shrink width 10 px
+bindsym $mod+Shift+y		resize grow width 20 px
+bindsym $mod+Shift+u		resize shrink height 20 px
+bindsym $mod+Shift+i		resize grow height 20 px
+bindsym $mod+Shift+o		resize shrink width 20 px
 
 # split orientation
 bindsym $mod+t				split toggle
@@ -108,6 +108,8 @@ bindsym $mod+a focus parent
 # Screen settings
 exec_always "~/.config/i3/screen_setup.sh"
 
+set $vertical_port DP-3
+
 workspace "1" output primary
 workspace "2" output primary
 workspace "3" output primary
@@ -115,9 +117,9 @@ workspace "4" output primary
 workspace "5" output primary
 workspace "6" output primary
 workspace "7" output primary
-workspace "8" output HDMI-1 primary
-workspace "9" output HDMI-1 primary
-workspace "10" output HDMI-1 primary
+workspace "8" output $vertical_port primary
+workspace "9" output $vertical_port primary
+workspace "10" output $vertical_port primary
 
 set $ws1 "1"
 set $ws2 "2"
@@ -172,7 +174,7 @@ gaps outer 5
 smart_gaps on
 smart_borders no_gaps
 
-bindsym $mod+F1 exec google-chrome
+bindsym $mod+F1 exec chromium
 bindsym $mod+F2 exec code
 bindsym $mod+F3 exec nautilus
 
@@ -185,32 +187,22 @@ exec xautolock -detectsleep -time 5 -locker '~/.config/i3/lock.sh' \
 
 # Assign apps to workspaces
 assign [class="Code"] → $ws3
-assign [class="Mattermost"] → $ws10
-assign [class="zoom"] → $ws9
-for_window [instance="google-chrome" title="Discover on SoundCloud - Google Chrome"] move to workspace $ws10
-for_window [instance="google-chrome" title="Zimbra: Réception - Google Chrome"] move to workspace $ws2
+assign [class="Teams"] → $ws10
+for_window [instance="chromium" title="Mail - HUYNH Nicolas - Outlook - Chromium"] move to workspace $ws9
+
 
 # Start-up script
-exec --no-startup-id /usr/bin/mattermost-desktop
+exec --no-startup-id /usr/bin/teams
 exec --no-startup-id code
-exec --no-startup-id /usr/bin/google-chrome --new-window \
-	https://soundcloud.com \
-	https://open.spotify.com/ \
+exec --no-startup-id /usr/bin/chromium --new-window \
 	https://reddit.com/ \
-	https://www.tradingview.com/chart/YGvIR19H/
+	https://www.lemonde.fr/
 
-exec --no-startup-id /usr/bin/google-chrome --new-window \
-	https://webmail.stormshield.eu/ \
-	https://outlook.office.com/mail/inbox \
-	https://review-sns.stormshield.eu/differential/query/GpixWXJoCOc0/ \
-	https://jira.stormshield.eu/secure/RapidBoard.jspa?rapidView=156&view=detail&selectedIssue=EAL-295&quickFilter=613 \
-	https://docs.google.com/spreadsheets/d/1xOOfV6_9wFw9dR2t2_BBMCFsuoSgzxRT5R7HqHIpglk/edit#gid=276789564 \
+exec --no-startup-id /usr/bin/chromium --new-window \
+	https://outlook.office.com/mail/inbox
 
-# exec --no-startup-id /usr/bin/evolution
-
-exec --no-startup-id kitty --session ~/.config/kitty/link
 exec --no-startup-id kitty --session ~/.config/kitty/work
 
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id picom &
+# exec_always --no-startup-id picom &

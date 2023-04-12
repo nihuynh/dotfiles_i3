@@ -9,3 +9,15 @@ unzip -o -j ${FONT_NAME}.zip
 mkdir -p ~/.fonts
 cp *.otf ~/.fonts
 fc-cache -f -v
+
+# if you have this errors :
+
+# xset:  bad font path element (#0), possible causes are:
+#     Directory does not exist or has wrong permissions
+#     Directory missing fonts.dir
+#     Incorrect font server address or syntax
+
+# Run this :
+# cd ~/.fonts
+# sudo mkfontscale
+# sudo mkfontdir

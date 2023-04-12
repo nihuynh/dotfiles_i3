@@ -9,7 +9,7 @@ alias ttop='top -ocpu -R -F -s 2 -n30'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias ls='ls -lha --color'
+alias ls='ls -lha --color=always'
 # -------------------------------------------------------------------
 
 function mkcd {

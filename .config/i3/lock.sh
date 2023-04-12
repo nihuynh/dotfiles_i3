@@ -1,7 +1,11 @@
 #!/bin/bash
 
 TSLOCK=/tmp/screen.png
-ICON="$HOME/.config/i3/lock_icon.png"
+
+ROOT_I3="$HOME/.config/i3/"
+ICONS=("lock_icon_croissant.png" "lock_icon_hobbs.png" "lock_icon.png")
+ICON="$ROOT_I3${ICONS[ $RANDOM % ${#ICONS[@]} ]}"
+
 scrot $TSLOCK
 convert $TSLOCK -scale 20% -scale 500% $TSLOCK
 pactl set-sink-mute @DEFAULT_SINK@ on

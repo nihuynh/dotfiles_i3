@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/nicolash/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -109,15 +109,43 @@ if [[ -f ~/.alias ]]; then
 	source ~/.alias
 fi
 export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
-export PATH="$PATH:$HOME/Téléchargements/packages/arcanist/bin"
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=5000
 HISTFILESIZE=5000
-#kitty 
+setopt appendhistory
+
+unsetopt autocd
+unsetopt beep
+unsetopt nomatch
+# unsetopt notify
+
+# Completion
 autoload -Uz compinit
 compinit
+autoload -U colors
+colors
+
+# match current input to history items
+# bind to up arrow and down arrow
+# this will change your life and make traffic bearable.
+# bindkey '^[[A' up-line-or-search
+# bindkey '^[[B' down-line-or-search
+
+# Editor
+export EDITOR='vim'
+export VISUAL='vim'
+
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
-xset +fp /home/nicolash/.fonts
+xset +fp $HOME/.fonts
 xset fp rehash
+
+# Sagemcom
+export https_proxy=http://rmmproxy.ads.local:8080/
+export http_proxy=http://rmmproxy.ads.local:8080/
+export ftp_proxy=http://rmmproxy.ads.local:8080/
+export no_proxy=localhost,127.0.0.1,.local,.comon,.sagem,.scom
+# if [[ -f ~/.zshrc.scom.old ]]; then
+# 	source ~/.zshrc.scom.old
+# fi

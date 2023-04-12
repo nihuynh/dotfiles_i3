@@ -1,9 +1,9 @@
 title WORKSPACE
 new_tab WORK
 launch zsh
-cd ~/Work/firmware
-new_tab TOOLCHAIN
+cd ~/master
+new_tab SERIAL
 launch zsh
-cd ~/Work/doxygen_templates
+kermit -- /dev/ttyUSB0
 new_tab OTHER
 launch zsh
