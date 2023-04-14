@@ -3,12 +3,12 @@
 PRIMARY_BG=$HOME/.config/i3/hubble.jpg
 SECOND_BG=$HOME/.config/i3/portrait.jpg
 # Monitor setup :
-PRIMARY_SCREEN=DP-2
-VERTICAL_SCREEN=DP-3
+PRIMARY_SCREEN=DP2
+VERTICAL_SCREEN=DP3
 
 xrandr \
-	--output HDMI-4 --off --output HDMI-3 --off --output HDMI-2 --off --output HDMI-1 --off \
-	--output DP-4 --off --output DP-1 --off \
+	--output HDMI4 --off --output HDMI3 --off --output HDMI2 --off --output HDMI1 --off \
+	--output DP4 --off --output DP1 --off \
 	--output $VERTICAL_SCREEN --mode 1920x1080 --pos 1920x0 --rotate right \
 	--output $PRIMARY_SCREEN --primary --mode 1920x1080 --pos 0x416 --rotate normal
 

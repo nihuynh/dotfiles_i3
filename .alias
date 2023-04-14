@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 # Customs aliases
 alias list='alias && echo "tree, nscan, ip, mkcd, mkex, sub, vbc"'
 alias scan="pwd && ls -lha"
@@ -12,18 +11,18 @@ alias mv='mv -i'
 alias ls='ls -lha --color=always'
 # -------------------------------------------------------------------
 
-function mkcd {
+function mkcd() {
 	dir="$*";
 	mkdir -p "$dir" && cd "$dir";
 }
-function mkex { for i in {00..${@:-5}} ; do; mkdir -v "ex$i" ; done }
+function mkex() { for i in {00..${@:-5}} ; do; mkdir -v "ex$i" ; done }
 
-ip () {
+function show_ip() {
 	# determine local IP address
 	ifconfig | grep "inet " | awk '{ print $2 }'
 }
 
-function nscan {
+function nscan() {
 	STARTTIME=$(date +%s)
 	subnet=$(ifconfig | grep "inet " | cut -d ' ' -f 2 | sed '1d' | cut -d '.' -f 1-3)
 	for ip in $(seq 1 ${@:-254}); do; (ping -c 1 -W 5 $subnet.$ip >/dev/null && echo "$subnet.$ip UP"); done
@@ -31,15 +30,15 @@ function nscan {
 	echo "It takes $(($ENDTIME - $STARTTIME)) seconds to complete this task..."
 }
 
-function tree {
+function tree() {
 	find . -type d -maxdepth ${@:-2} | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"
 }
 
-ggwp() {
+function ggwp() {
 	git add -A && git commit -m "$@" && git push
 }
 # Easy way to extract archives
-extract () {
+function extract() {
    if [ -f $1 ] ; then
        case $1 in
            *.tar.bz2)   tar xvjf $1    ;;
@@ -71,8 +70,11 @@ function sc() {
 }
 # -------------------------------------------------------------------
 alias conf='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-confwp() {
+function confwp() {
 	conf add -u && conf commit -m "$@" && conf push
 }
-alias update-vscode='wget https://vscode-update.azurewebsites.net/latest/linux-deb-x64/stable -O /tmp/code_latest_amd64.deb \
-    && sudo dpkg -i /tmp/code_latest_amd64.deb'
+
+function update-vscode() {
+	wget --show-progress -O /tmp/code_latest_amd64.deb 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64'
+	sudo dpkg -i /tmp/code_latest_amd64.deb && rm -rf /tmp/code_latest_amd64.deb
+}

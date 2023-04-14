@@ -137,6 +137,7 @@ export EDITOR='vim'
 export VISUAL='vim'
 
 # Completion for kitty
+export TERMINAL=kitty
 kitty + complete setup zsh | source /dev/stdin
 xset +fp $HOME/.fonts
 xset fp rehash
