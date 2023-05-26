@@ -4,6 +4,5 @@ launch zsh
 cd ~/master
 new_tab SERIAL
 launch zsh
-kermit -- /dev/ttyUSB0
 new_tab OTHER
 launch zsh

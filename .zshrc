@@ -136,6 +136,9 @@ colors
 export EDITOR='vim'
 export VISUAL='vim'
 
+# Needed to check settings (see here: https://sakhnik.com/2018/08/02/i3-gnome.html)
+export XDG_CURRENT_DESKTOP=GNOME
+
 # Completion for kitty
 export TERMINAL=kitty
 kitty + complete setup zsh | source /dev/stdin
@@ -147,6 +150,7 @@ export https_proxy=http://rmmproxy.ads.local:8080/
 export http_proxy=http://rmmproxy.ads.local:8080/
 export ftp_proxy=http://rmmproxy.ads.local:8080/
 export no_proxy=localhost,127.0.0.1,.local,.comon,.sagem,.scom
+
 # if [[ -f ~/.zshrc.scom.old ]]; then
 # 	source ~/.zshrc.scom.old
 # fi
