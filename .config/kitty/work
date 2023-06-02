@@ -1,8 +1,9 @@
 title WORKSPACE
-new_tab WORK
+new_tab DEV-I
 launch zsh
 cd ~/master
-new_tab SERIAL
+new_tab DEV-II
 launch zsh
+cd ~/master
 new_tab OTHER
 launch zsh
