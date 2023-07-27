@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Wallpaper :
 PRIMARY_BG=$HOME/.config/i3/hubble.jpg
 SECOND_BG=$HOME/.config/i3/portrait.jpg

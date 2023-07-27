@@ -191,21 +191,9 @@ assign [class="Teams"] → $ws10
 for_window [instance="chromium" title="Mail - HUYNH Nicolas - Outlook - Chromium"] move to workspace $ws10
 
 
-
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # exec_always --no-startup-id picom &
 
-# Start-up script
-exec --no-startup-id /usr/bin/teams
-exec --no-startup-id code
-exec --no-startup-id kitty --session ~/.config/kitty/work
- 
-exec --no-startup-id "workspace 2; sh -c 'sleep 5; exec \
-	/usr/bin/chromium --new-window \
-	https://reddit.com/ \
-	https://www.lemonde.fr/'"
-
-exec --no-startup-id "sh -c 'sleep 5; exec \
-	/usr/bin/chromium --new-window \
-	https://outlook.office.com/mail/inbox'"
+# Start up apps
+# exec_always --no-startup-id $HOME/.config/i3/start_apps.sh
