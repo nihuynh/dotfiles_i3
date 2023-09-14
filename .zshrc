@@ -152,7 +152,7 @@ export ftp_proxy=http://rmmproxy.ads.local:8080/
 export no_proxy=localhost,127.0.0.1,.local,.comon,.sagem,.scom
 
 # Rust
-source "$HOME/.cargo/env"
+# source "$HOME/.cargo/env"
 
 # if [[ -f ~/.zshrc.scom.old ]]; then
 # 	source ~/.zshrc.scom.old

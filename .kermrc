@@ -1,0 +1,12 @@
+set line \%1
+set carrier-watch off
+set speed 115200
+set flow xon/xoff
+set prompt "Linux Kermit> "
+if defined \%2 {
+	set session-log binary
+	log session ~/master/playground/misc/\%2.log
+	echo { Loging on the file : ~/master/playground/misc/\%2.log }
+}
+robust
+connect
