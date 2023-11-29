@@ -157,3 +157,7 @@ export no_proxy=localhost,127.0.0.1,.local,.comon,.sagem,.scom
 # if [[ -f ~/.zshrc.scom.old ]]; then
 # 	source ~/.zshrc.scom.old
 # fi
+
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
